@@ -409,13 +409,16 @@ $(document).ready(function() {
 		showLastSave();
 		
 		//chargement de la sauvegarde si nécessaire
-		for (i = END_YEAR; i >= START_YEAR; i--) {
-			row = $('#'+i);
+		for (t = START_YEAR; t <= END_YEAR ; t++) {
+			row = $('#'+t);
 			
-			row.find(".inputrevenu").val(localStorage.getItem(i+'.inputrevenu'));
-			row.find(".inputpaid").val(localStorage.getItem(i+'.inputpaid'));
-			row.find(".regulpaid").val(localStorage.getItem(i+'.regulpaid'));
-			//calculateYearsCotis(row);
+			row.find(".inputrevenu").val(localStorage.getItem(t+'.inputrevenu'));
+			row.find(".inputpaid").val(localStorage.getItem(t+'.inputpaid'));
+			row.find(".regulpaid").val(localStorage.getItem(t+'.regulpaid'));
+			if(row.find(".inputrevenu").val() == '' && row.find(".inputrevenu").val() == ''  && row.find(".inputrevenu").val() == ''){
+				continue;
+			}else
+				calculateYearsCotis(row);
 		}
 	}
 		
