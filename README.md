@@ -8,3 +8,7 @@ Si vous êtes affilié à la CIPAV, il est possible que vos droits soient spoli�
 La CIPAV se retranche derrière des calculs abscons généralement majorés en votre défaveur pour déterminer vos cotisations, ce tableur permet de préciser les éléments de cotisations dont vous êtes réellement redevable ainsi que les points de retraite acquis.
 
 Le calcul des cotisations est réalisé dans le navigateur, aucune donné n'est envoyé à un serveur, vous pouvez utiliser cette interface en toute confidentialité (possibilité d'enregistrer cette page web sur votre ordinateur pour l'utiliser en local) 
+
+Le tableur est accessible ici : https://lacipavtetue.github.io/ 
+
+Les sources sont libres, librement accesible sur https://github.com/lacipavtetue/lacipavtetue.github.io/ 
