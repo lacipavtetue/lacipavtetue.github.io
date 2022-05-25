@@ -1,5 +1,4 @@
-# lacipavtetue.github.io
-Tableur de calcul des cotisations CIPAV
+# Tableur de calcul des cotisations CIPAV
 
  Ce tableur permet de déterminer les cotisations sociales obligatoires de retraite CIPAV calculées selon vos revenus.
 
