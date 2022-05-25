@@ -11,4 +11,7 @@ Le calcul des cotisations est réalisé dans le navigateur, aucune donné n'est 
 
 Le tableur est accessible ici : https://lacipavtetue.github.io/ 
 
-Les sources sont libres, librement accesible sur https://github.com/lacipavtetue/lacipavtetue.github.io/ 
+Les sources sont libres, librement accesibles sur https://github.com/lacipavtetue/lacipavtetue.github.io/ 
+
+* **./data_cipav.js** contient les données nécessaires à l'établissement des cotisation (classes de revenus/cotisation de base/cotisation complémentaire/points associés ventilé par années) basé sur les guides de la Cipav
+* **./main.js** contient la logique applicative de calcul des cotisations
