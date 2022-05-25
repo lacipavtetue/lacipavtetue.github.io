@@ -14,6 +14,19 @@ function formatNumber(number) {
 	return nf.format(Number(number).toFixed(2));
 }
 
+function initTooltips() {
+	//initialisation des tooltips
+	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+	var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+		return new bootstrap.Tooltip(tooltipTriggerEl)
+	})
+
+	$('a[data-toggle="tooltip"]').tooltip({
+		placement: 'bottom',
+		html: true
+	});
+}
+
 $(document).ready(function() {
 	/************************************
 	
@@ -33,15 +46,15 @@ $(document).ready(function() {
             				<input type="text" class="form-control form-control-sm inputrevenu" data-bs-toggle="tooltip" data-bs-placement="top" title="renseignez ici les revenus non salariés de l'année `+ i + ` déclarés dans votre déclaration d'impôt (2042 C) ` + i + `" placeholder="revenus déclarés" aria-label="revenus déclarés" aria-describedby="inputGroup-sizing-sm">
             			</div>
             		</td>
-            		<td style='width:300px'>
+            		<td style='width:310px'>
             			<span style='font-size: 14px;'><b class="complet">0</b> € dont</span>:
             			<p style="font-size: 12px; padding: 0 0 0 0; margin: 0 0;">
             				<i class="bi bi-info-circle"></i> <span class="base"></span> € (retraite de base) <br/> 
             				<i class="bi bi-info-circle"></i> <span class="complem"></span> € (retraite complémentaire) - classe <span class="clas">E</span><br/>
             				<i class="bi bi-info-circle"></i> <span class="deces"></span> € (invalidité décès) - classe <span class="invaliddeces">A</span> - 
-            					<input type="checkbox" class="invalidcheck invalidcheckA" checked data-bs-toggle="tooltip" data-bs-placement="top" title="L'adhérent peut choisir sa classe de prévoyance invalidité-décès"> A 
-            					<input type="checkbox" class="invalidcheck invalidcheckB" data-bs-toggle="tooltip" data-bs-placement="top" title="L'adhérent peut choisir sa classe de prévoyance invalidité-décès"> B 
-            					<input type="checkbox" class="invalidcheck invalidcheckC" data-bs-toggle="tooltip" data-bs-placement="top" title="L'adhérent peut choisir sa classe de prévoyance invalidité-décès"> C
+            					<input type="radio" class="invalidcheck invalidcheckA" checked data-bs-toggle="tooltip" data-bs-placement="top" title="L'adhérent peut choisir sa classe de prévoyance invalidité-décès" name="flexRadioDefault`+ i + `"> A 
+            					<input type="radio" class="invalidcheck invalidcheckB" data-bs-toggle="tooltip" data-bs-placement="top" title="L'adhérent peut choisir sa classe de prévoyance invalidité-décès" name="flexRadioDefault`+ i + `"> B 
+            					<input type="radio" class="invalidcheck invalidcheckC" data-bs-toggle="tooltip" data-bs-placement="top" title="L'adhérent peut choisir sa classe de prévoyance invalidité-décès" name="flexRadioDefault`+ i + `"> C
             				<br/> <a href='#'>détail du calcul »</a>
             			</p>
             			<div class="detail" style="margin: 0 0 0 0; display: none">détaill l lll </div>
@@ -67,7 +80,7 @@ $(document).ready(function() {
             		</td>
             		<td>
             			<b style='font-size: 14px;' class="ptsregimebase">0</b> pts 
-            			<i class="bi bi-info-circle" title="Vos revenus vous permettent d'obtenir XXX points de retraite" data-bs-toggle="tooltip">
+            			<i class="bi bi-info-circle ptsbasetitle" title="" data-bs-toggle="tooltip">
             		</td>
             		<td>
             			<div class="input-group mb-3 input-group-sm mb-3 points">
@@ -76,7 +89,7 @@ $(document).ready(function() {
             		</td>
             		<td>
             			<b style='font-size: 14px;' class="pts">0</b> pts
-            			<i class="bi bi-info-circle" title="votre classe de cotisation vous permet d'obtenir XXX points de retraite" data-bs-toggle="tooltip">
+            			<i class="bi bi-info-circle ptstitle" title="" data-bs-toggle="tooltip">
             		</td>
             		<td>
             			<div class="input-group mb-3 input-group-sm mb-3 points">
@@ -143,15 +156,7 @@ $(document).ready(function() {
 	$(".inputrevenu, .inputpaid, .regulpaid, .invalidcheck").on("change ", function() {
 		row = $(this).parent().parent().parent();
 
-		if ($(this).attr("class").includes("invalidcheck")) {
-			row.find(".invalidcheck").each(function(i, obj) {
-				$(this).prop('checked', false);
-			});
-			$(this).prop('checked', true);
-		}
-
-
-		revenu = row.find(".inputrevenu").val();
+		revenu = Number(row.find(".inputrevenu").val().replace(/\s/g,''));
 		paid = row.find(".inputpaid").val();
 		regulpaid = row.find(".regulpaid").val();
 		year = Number(row.attr("id"));
@@ -210,6 +215,7 @@ $(document).ready(function() {
 
 		row.data('pointRetraiteBase', pointRetraiteBase);
 		row.find(".ptsregimebase").text(formatNumber(pointRetraiteBase))
+		row.find(".ptsbasetitle").attr("title", "Vos revenus vous permettent d'obtenir "+formatNumber(pointRetraiteBase)+" points de retraite de base");
 
 		/************************************************************************************************
 			  Calcul des cotisations et des points de la retraite complémentaire   
@@ -249,6 +255,10 @@ $(document).ready(function() {
 		row.find(".complem").text(formatNumber(cotisation_complem))
 		row.find(".clas").text(classe);
 		row.find(".pts").text(points);
+		row.find(".ptstitle").attr("title", "votre classe de cotisation "+classe+" basée sur vos revenus "+year+" vous permet d'obtenir "+points+" points de retraite");
+		
+		//refresh des tooltips
+		initTooltips();
 
 		/************************************************
 	    
@@ -323,13 +333,5 @@ $(document).ready(function() {
 	});
 
 	//initialisation des tooltips
-	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-	var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-		return new bootstrap.Tooltip(tooltipTriggerEl)
-	})
-
-	$('a[data-toggle="tooltip"]').tooltip({
-		placement: 'bottom',
-		html: true
-	});
+	initTooltips();
 });
