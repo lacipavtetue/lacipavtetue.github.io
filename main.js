@@ -112,7 +112,7 @@ function calculateYearsCotis(row) {
 
 	row.data('pointRetraiteBase', pointRetraiteBase);
 	row.find(".ptsregimebase").text(formatNumber(pointRetraiteBase))
-	row.find(".ptsbasetitle").attr("title", "Vos revenus vous permettent d'obtenir "+formatNumber(pointRetraiteBase)+" points de retraite de base");
+	row.find(".ptsbasetitle").attr("title", "Vos revenus vous permettent d'obtenir "+formatNumber(pointRetraiteBase)+" points de retraite de base (function Beta)");
 
 	/************************************************************************************************
 		  Calcul des cotisations et des points de la retraite complémentaire   
@@ -294,7 +294,7 @@ $(document).ready(function() {
             		<td>
             			<b style='font-size: 14px;' class="ptsregimebase">0</b> pts 
             			<i class="bi bi-info-circle ptsbasetitle" title="" data-bs-toggle="tooltip"></i>
-            			<br/><span style="color: #c0392b; font-size: 12px;">Beta</span>
+            			<br/><span style="color: #c0392b; font-size: 10px;">Beta</span>
             		</td>
             		<td>
             			<div class="input-group mb-3 input-group-sm mb-3 points">
