@@ -45,10 +45,9 @@ function calculateYearsCotis(row) {
 	row.data('regulpaid', regulpaid);
 	
 	if(row.data('regularisation') != null){
-		regularisationDue = row.data('regularisation');
-		
+		regularisationDue = row.data('regularisation').replace(/\s/g,'');
 		if(nf.format(Number(regularisationDue).toFixed(0))  != nf.format(Number(regulpaid).toFixed(0)) ){
-			row.next().find(".warningregul").html("<b>Attention:</b> la régularisation payées en "+year+" d'un montant de "+formatNumber(regulpaid)+" sur vos cotisations "+(year-1)+" ne correspond pas au montant des régulations dues d'un montant de "+formatNumber(regularisationDue)+" (écart de "+(regulpaid-regularisationDue)+")");
+			row.next().find(".warningregul").html("<b>Attention:</b> la régularisation payées en "+year+" d'un montant de "+formatNumber(regulpaid)+" sur vos cotisations "+(year-1)+" ne correspond pas au montant des régulations dues d'un montant de "+regularisationDue+" (écart de "+formatNumber(regulpaid-regularisationDue)+")");
 		} else {
 			row.next().find(".warningregul").html("");
 		}
@@ -71,7 +70,7 @@ function calculateYearsCotis(row) {
 
 	if (revenu < classeCotisationsBase[0]) {  //revenus supérieurs au seuil
 		cotisation_base = classeCotisationsBase[1];
-		txt = "Vos revenus sont inférieurs à "+classeCotisationsBase[0]+" €, votre cotisation est basée sur un forfait de "+formatNumber(classeCotisationsBase[1]);
+		txt = "Vos revenus sont inférieurs à "+classeCotisationsBase[0]+" €, votre cotisation est basée sur un forfait de "+formatNumber(classeCotisationsBase[1])+" €";
 		row.find(".baseinfo").attr("title", txt);
 		row.find(".baseinfoexpanded").html(txt);
 	} else {
@@ -198,12 +197,13 @@ function calculateYearsCotis(row) {
 	});
 	
 	//régulation à intégrer en N+1
-	$("#" + (year + 1)).find(".reste").each(function(i, obj) {
-		$(this).text(formatNumber((complet - paid).toFixed(0)));
+	regulNplusOne = formatNumber((complet - paid).toFixed(0))
+	$("#" + (year + 1)).find(".reste").each(function(i, obj) { 
+		$(this).text(regulNplusOne);
 	});
-	$("#" + (year + 1)).data('regularisation', (complet - paid).toFixed(0));
+	$("#" + (year + 1)).data('regularisation', regulNplusOne);
 	row.next().find(".reste").each(function(i, obj) {
-		$(this).text(formatNumber((complet - paid).toFixed(0)));
+		$(this).text(regulNplusOne);
 	});
 	row.next().find(".summary").css({ "visibility": "visible" });
 
@@ -380,11 +380,23 @@ $(document).ready(function() {
 	$('#save').click(function(){
 		
 		for (i = END_YEAR; i >= START_YEAR; i--) {
-			row = $('#'+i);
-	
-			localStorage.setItem(i+'.inputrevenu', row.find(".inputrevenu").val());
-			localStorage.setItem(i+'.inputpaid', row.find(".inputpaid").val());
-			localStorage.setItem(i+'.regulpaid', row.find(".regulpaid").val());
+			try {
+				row = $('#'+i);
+		
+				localStorage.setItem(i+'.inputrevenu', row.find(".inputrevenu").val());
+				localStorage.setItem(i+'.inputpaid', row.find(".inputpaid").val());
+				localStorage.setItem(i+'.regulpaid', row.find(".regulpaid").val());
+				
+				if (row.find(".invalidcheckA").prop('checked') == true) {
+					localStorage.setItem(i+'.invalidcheck', "A");
+				} else if (row.find(".invalidcheckB").prop('checked') == true) {
+					localStorage.setItem(i+'.invalidcheck', "B");
+				} else if (row.find(".invalidcheckC").prop('checked') == true) {
+					localStorage.setItem(i+'.invalidcheck', "C");
+				}
+			} catch (e) {
+    			console.log('Une erreur à eu lieu : ' + e); 
+			}
 		}
 		
 		//date de dernière sauvegarde
@@ -410,15 +422,28 @@ $(document).ready(function() {
 		
 		//chargement de la sauvegarde si nécessaire
 		for (t = START_YEAR; t <= END_YEAR ; t++) {
-			row = $('#'+t);
-			
-			row.find(".inputrevenu").val(localStorage.getItem(t+'.inputrevenu'));
-			row.find(".inputpaid").val(localStorage.getItem(t+'.inputpaid'));
-			row.find(".regulpaid").val(localStorage.getItem(t+'.regulpaid'));
-			if(row.find(".inputrevenu").val() == '' && row.find(".inputrevenu").val() == ''  && row.find(".inputrevenu").val() == ''){
-				continue;
-			}else
-				calculateYearsCotis(row);
+			try {
+				row = $('#'+t);
+				
+				row.find(".inputrevenu").val(localStorage.getItem(t+'.inputrevenu'));
+				row.find(".inputpaid").val(localStorage.getItem(t+'.inputpaid'));
+				row.find(".regulpaid").val(localStorage.getItem(t+'.regulpaid'));
+				
+				if (localStorage.getItem(t+'.invalidcheck') == "A") {
+					row.find(".invalidcheckA").prop('checked', true);
+				} else if (localStorage.getItem(t+'.invalidcheck') == "B") {
+					row.find(".invalidcheckB").prop('checked', true);
+				} else if (localStorage.getItem(t+'.invalidcheck') == "C") {
+					row.find(".invalidcheckC").prop('checked', true);
+				}
+				
+				if(row.find(".inputrevenu").val() == '' && row.find(".inputrevenu").val() == ''  && row.find(".inputrevenu").val() == ''){
+					continue;
+				}else
+					calculateYearsCotis(row);
+			} catch (e) {
+    			console.log('Une erreur à eu lieu : ' + e); 
+			}
 		}
 	}
 		
