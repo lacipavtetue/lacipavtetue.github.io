@@ -14,5 +14,5 @@ Le tableur est accessible ici : https://lacipavtetue.github.io/
 Le code source de cette interface est libre et <a href="https://github.com/lacipavtetue/lacipavtetue.github.io" target="_blank">librement accessible sur github</a>. 
                 Cette interface a été créé par des bénévoles sans lien avec la Cipav.
 
-* **./data_cipav.js** contient les données nécessaires à l'établissement des cotisation (classes de revenus/cotisation de base/cotisation complémentaire/points associés ventilé par années) basé sur les guides de la Cipav
+* **./data_cipav.js** contient les données nécessaires à l'établissement des cotisations (classes de revenus/cotisation de base/cotisation complémentaire/points associés ventilé par années) basé sur les guides de la Cipav
 * **./main.js** contient la logique applicative de calcul des cotisations
