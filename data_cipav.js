@@ -18,7 +18,7 @@ var classe_revenus = [
   						 [26580, 49280, 57850, 66400, 83060, 103180, 123300, 100000000],  //2015  https://www.osteopathie.org/documents.php?url=cipav_guide-2015pdf_139.pdf   https://docplayer.fr/451936-Votre-guide-retraite-et-prevoyance.html
   						 [26420, 48991, 57501, 66001, 82560, 102561, 122560, 100000000],  //2014  https://docplayer.fr/29864699-Votre-guide-retraite-et-prevoyance.html
   						 [26420, 48991, 57501, 66001, 82560, 102561, 122560, 100000000],  //2013  https://docplayer.fr/23904420-Caisse-interprofessionnelle-de-prevoyance-et-d-assurance-vieillesse.html
-  						 [26420, 48991, 57501, 66001, 82560, 102561, 122560, 100000000],  //2012  https://gestiondepatrimoine.com/retraite/non-salarie/cipav-retraite-complementaire-des-architectes-ingenieurs-experts-et-conseils.html  https://docplayer.fr/22014755-Cipav-2012-indd-1-14-12-11-15-21.html 
+  						 [41050, 48990, 57500, 66000, 82560, 100000000],  //2012  https://gestiondepatrimoine.com/retraite/non-salarie/cipav-retraite-complementaire-des-architectes-ingenieurs-experts-et-conseils.html  https://docplayer.fr/22014755-Cipav-2012-indd-1-14-12-11-15-21.html 
   						 [41050, 48990, 57500, 66000, 82560, 100000000],  //2011  https://docplayer.fr/4025010-Professionnels-liberaux.html
   						 [40605, 48459, 56870, 65285, 81665, 100000000],  //2010  https://docplayer.fr/23234602-Caisse-interprofessionnelle-de-prevoyance-et-d-assurance-vieillesse-debut-d-activite-liberale.html
   						 [40605, 48459, 56870, 65285, 81665, 100000000],  //2009  https://docplayer.fr/5471687-Caisse-interprofessionnelle-de-prevoyance-et-d-assurance-vieillesse-osteopathes.html  https://docplayer.fr/10549331-C-a-i-s-s-e-i-n-t-e-r-p-r-o-f-e-s-s-i-o-n-n-e-l-l-e-d-e-p-r-e-v-o-y-a-n-c-e-e-t-d-a-s-s-u-r-a-n-c-e-v-i-e-i-l-l-e-s-s-e-debut-d-activite-liberale.html
@@ -43,7 +43,7 @@ var classe_cotisations = [
 						[1214, 2427, 3641, 6068, 8495, 13349, 14563, 15776],	//2015   OK
 						[1198, 2395, 3593, 5989, 8384, 13175, 14373, 15570],	//2014   OK
 						[1184, 2369, 3553, 5922, 8291, 13028, 14213, 15397],	//2013   OK
-						[1156, 2312, 3468, 5780, 8092, 11560, 14373, 15570],	//2012   OK
+						[1156, 2312, 3468, 5780, 8092, 11560],	//2012   OK
 						[1092, 2184, 3276, 5460, 7644, 10920],	//2011   OK
 						[1032, 2064, 3096, 5160, 7224, 10320],	//2010   OK
 						[988, 1976, 2964, 4940, 6916, 9880],	//2009   OK
@@ -96,7 +96,7 @@ var classe_cotisations_base = [
 						[2929, 296, 38040, 0.0823, 190200, 0.0187],	//2015   OK
 						[1971, 199, 31916, 0.0823, 187740, 0.0187],	//2014   OK
 						[1944, 190, 31477, 0.0823, 185160, 0.0181],	//2013   OK
-						[1944, 190, 31477, 0.0823, 185160, 0.0181],	//2012   
+						[1838, 158, 31477, 0.0823, 185160, 0.0181],	//2012   OK
 						[1944, 190, 31477, 0.0823, 185160, 0.0181],	//2011
 						[1944, 190, 31477, 0.0823, 185160, 0.0181],	//2010   
 						[1944, 190, 31477, 0.0823, 185160, 0.0181],	//2009   
@@ -109,4 +109,3 @@ var classe_cotisations_base = [
 						[1944, 190, 31477, 0.0823, 185160, 0.0181]	//2002
 	
  ];
-      
