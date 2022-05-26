@@ -45,7 +45,7 @@ function calculateYearsCotis(row) {
 	row.data('regulpaid', regulpaid);
 	
 	if(row.data('regularisation') != null){
-		regularisationDue = Number(row.data('regularisation').replace(/\s/g,''));
+		regularisationDue = row.data('regularisation').replace(/\s/g,'');
 		if(nf.format(Number(regularisationDue).toFixed(0))  != nf.format(Number(regulpaid).toFixed(0)) ){
 			row.next().find(".warningregul").html("<b>Attention:</b> la régularisation payées en "+year+" d'un montant de "+formatNumber(regulpaid)+" sur vos cotisations "+(year-1)+" ne correspond pas au montant des régulations dues d'un montant de "+regularisationDue+" (écart de "+formatNumber(regulpaid-regularisationDue)+")");
 		} else {
