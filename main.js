@@ -9,7 +9,7 @@ function getClasse(year, type) {
 }
 
 /* format correctement les sommes (2 chiffres après la digit) */
-var nf = Intl.NumberFormat();
+var nf = Intl.NumberFormat("fr-FR");
 function formatNumber(number) {
 	return nf.format(Number(number).toFixed(2));
 }
