@@ -79,14 +79,14 @@
         </div>
         <div class="container" style="padding: 0 0 0 0;">
 			<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-				<label class="btn btn-outline-primary" for="btnradio1">Version compacte</label> 
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"> 
-				<label class="btn btn-outline-primary" for="btnradio2">Version détaillée</label> 
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"> 
-				<label class="btn btn-outline-primary" for="btnradio3">Version imprimable</label>
+				<input type="radio" class="btn-check btn-sm" name="btnradio" id="btnradio1" autocomplete="off" checked>
+				<label class="btn btn-outline-primary btn-sm" for="btnradio1">Version compacte</label> 
+				<input type="radio" class="btn-check btn-sm" name="btnradio" id="btnradio2" autocomplete="off"> 
+				<label class="btn btn-outline-primary btn-sm" for="btnradio2">Version détaillée</label> 
+				<input type="radio" class="btn-check btn-sm" name="btnradio" id="btnradio3" autocomplete="off"> 
+				<label class="btn btn-outline-primary btn-sm" for="btnradio3" data-bs-toggle="tooltip" data-bs-placement="top" title="Version imprimable non éditable">Version imprimable</label>
 			</div>
-		<div style="float: right; margin-bottom: 15px; text-align: right;">
+			<div style="float: right; margin-bottom: 15px; text-align: right;">
         		<button id="save" type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Sauvegarder les données du tableau en local dans votre navigateur (facilite la saisie au rechargement du navigateur)" ><i class="bi bi-save"></i> Sauvegarder</button>
         		<button id="deletesave" type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Effacer les données sauvegardées (vous perdrez toutes les saisies enregistrées en quittant la page)" ><i class="bi bi-trash3"></i></button>
         		<br/><span id="lastsave" style=" margin-bottom: 15px;font-size: 10px;"></span>
