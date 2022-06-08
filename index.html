@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Tableur de calcul des cotisations CIPAV. Calcul des cotisations et des points retraite de base et retraite complémentaire Lacipav" />
-        <meta name="author" content="XXX" /> 
+        <meta name="author" content="XXX" />
 
         <title>Tableur de calcul des cotisations CIPAV</title>
         <link href="css/docs.min.css" rel="stylesheet" />
@@ -60,7 +60,7 @@
         <div class="container">
             <h3 id="accented-tables">Tableur de calcul des cotisations CIPAV</h3>
             <div class="bd-callout bd-callout-info">
-                Ce tableur permet de déterminer les cotisations sociales obligatoires de retraite CIPAV calculées selon les revenus.<br />
+                Ce tableur permet de déterminer les cotisations sociales obligatoires de retraite CIPAV calculées selon vos revenus.<br />
                 <br />
                 Il est destiné a aider les professionnels libéraux affiliés à la CIPAV ainsi que le corps juridique dans l'établissement du calcul des cotisations. <br /><br />
                 Il est de notoriété que les services de la CIPAV sont défaillants et régulièrement condamnés par la justice.<br />
@@ -78,11 +78,15 @@
             </div>
         </div>
         <div class="container" style="padding: 0 0 0 0;">
-	  	    <div class="form-check form-switch" style="float: left">
-  					<input class="form-check-input" type="checkbox" id="compact" checked="true">
-  					<label class="form-check-label" for="flexSwitchCheckDefault">Version compacte</label>
+			<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+				<label class="btn btn-outline-primary" for="btnradio1">Version compacte</label> 
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"> 
+				<label class="btn btn-outline-primary" for="btnradio2">Version détaillée</label> 
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"> 
+				<label class="btn btn-outline-primary" for="btnradio3">Version imprimable</label>
 			</div>
-	        <div style="float: right; margin-bottom: 15px; text-align: right;">
+		<div style="float: right; margin-bottom: 15px; text-align: right;">
         		<button id="save" type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Sauvegarder les données du tableau en local dans votre navigateur (facilite la saisie au rechargement du navigateur)" ><i class="bi bi-save"></i> Sauvegarder</button>
         		<button id="deletesave" type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Effacer les données sauvegardées (vous perdrez toutes les saisies enregistrées en quittant la page)" ><i class="bi bi-trash3"></i></button>
         		<br/><span id="lastsave" style=" margin-bottom: 15px;font-size: 10px;"></span>
