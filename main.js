@@ -411,11 +411,13 @@ $(document).ready(function() {
 		$('#lastsave').text("");
 	});
 	
-	$('#compact').change(function() {
-   		if($(this).is(":checked")) 
+	$('#btnradio1, #btnradio2, #btnradio3 ').change(function() {
+   		if($(this).is(":checked") && $(this).attr('id') == "btnradio1") 
 			$(".expanded").css({ "display": "none" });
-      	else
+      	else if($(this).is(":checked") && $(this).attr('id') == "btnradio2") 
       		$(".expanded").css({ "display": "block" });
+      	else if($(this).is(":checked") && $(this).attr('id') == "btnradio3")
+      		alert('En cours de développement'); 
     });
 	
 	if(localStorage.getItem('datesave') != null){
