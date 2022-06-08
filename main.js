@@ -87,6 +87,7 @@ function calculateYearsCotis(row) {
 		row.find(".baseinfo").attr("title", txt);
 		row.find(".baseinfoexpanded").html(txt);
 	}
+	cotisation_base = cotisation_base.toFixed(0);
 	row.data('cotisation_base', cotisation_base);
 	row.find(".base").text(formatNumber(cotisation_base));
 
